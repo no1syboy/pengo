@@ -67,4 +67,9 @@ class Pengo_Challenge_NumberController extends Mage_Core_Controller_Front_Action
 		$this->loadLayout();
 		$this->renderLayout();
 	}
+
+	function threeAction(){
+		$this->loadLayout();
+		$this->renderLayout();
+	}
 }

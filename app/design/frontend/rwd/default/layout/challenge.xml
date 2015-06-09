@@ -66,6 +66,8 @@
 			<block name="one" type="core/template" template="challenge/one.phtml"></block>
 		</reference>
 	</challenge_number_one>
+	
+	
 	<challenge_number_two>
 		<reference name="root">
 			 <action method="setTemplate"><template>page/1column.phtml</template></action>
@@ -74,11 +76,14 @@
 			<block name="two" type="core/template" template="challenge/two.phtml"></block>
 		</reference>
 	</challenge_number_two>	
+	
+	
 	<challenge_number_three>
 		<reference name="root">
 			 <action method="setTemplate"><template>page/1column.phtml</template></action>
 		</reference>
 		<reference name="content">
+			<block name="three" type="core/template" template="challenge/three.phtml"></block>
 		</reference>
 	</challenge_number_three>	
 </layout>

@@ -1,12 +1,20 @@
 <?php
 
-$products = Mage::getModel('catalog/product')->getCollection()->addAttributeToSelect('*')->addFieldToFilter("name",array("eq"=>"Gorro"));
+$products = Mage::getModel('catalog/product')->getCollection()->addAttributeToSelect('*');
+//->addFieldToFilter("name",array("eq"=>"Gorro"));
 
 foreach($products as $product):?>
 
 <p>
-	<?php echo $product->getName();?>
-	<?php echo $product->getPrice();?>
+	<?php if ($product->isSalable()):?>
+	<?php $qty = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($product)->getQty();?>
+	<?php if ($qty<=10 || $qty>=50):?>
+	    <b><?php echo $product->getName()?></b>
+    	<?php echo $product->getPrice()?>
+    	#<?php echo $qty?>
+    	<?php #echo $product->getImageUrl();?>
+	<?php endif;?>
+	<?php endif;?>
 </p>
 
 <?php endforeach;?>

@@ -1,3 +1,23 @@
 <?php
 
 echo "Reto 2";
+
+$products = Mage::getModel('catalog/product')
+->getCollection()
+->addAttributeToSelect('*')
+->addAttributeToSort('created_at', 'DESC');
+
+$products->getSelect()->limit(3);
+
+// $products->addAttributeToSort('created_at', 'DESC');
+
+foreach($products as $product):?>
+    <?php $date = new DateTime($product->getCreatedAt());?>
+<p>
+	    <b><?php echo $product->getName()?></b>
+    	<?php echo $product->getPrice()?>
+    	<?php echo $date->format('Y/m/d [H:i:s]');?>
+    	<?php #echo $product->getImageUrl();?>
+</p>
+
+<?php endforeach;?>

@@ -6,7 +6,6 @@ app/code/community/Cm/
 app/code/core/
 app/design/adminhtml/default/default/
 app/design/frontend/base/
-app/design/frontend/rwd/
 app/design/frontend/default/blank/
 app/design/frontend/default/default/
 app/design/frontend/default/iphone/
@@ -41,7 +40,8 @@ app/etc/config.xml
 app/etc/enterprise.xml
 app/etc/local.xml.additional
 app/etc/local.xml.template
-app/etc/local.xml
+app
+/etc/local.xml
 app/.htaccess
 app/locale/
 app/Mage.php

@@ -2,6 +2,7 @@
 
 $products = Mage::getModel('catalog/product')->getCollection()->addAttributeToSelect('*');
 //->addFieldToFilter("name",array("eq"=>"Gorro"));
+$baseUrl = Mage::getBaseUrl('media') . 'catalog/product/';
 
 foreach($products as $product):?>
 
@@ -12,7 +13,22 @@ foreach($products as $product):?>
 	    <b><?php echo $product->getName()?></b>
     	<?php echo $product->getPrice()?>
     	#<?php echo $qty?>
-    	<?php #echo $product->getImageUrl();?>
+	<?php endif;?>
+	<?php endif;?>
+</p>
+
+<?php endforeach;?>
+<br><h3>with images</h3>
+<?php foreach($products as $product):?>
+
+<p>
+	<?php if ($product->isSalable()):?>
+	<?php $qty = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($product)->getQty();?>
+	<?php if ($qty<=10 || $qty>=50):?>
+	    <b><?php echo $product->getName()?></b>
+    	<?php echo $product->getPrice()?>
+    	#<?php echo $qty?>
+    	<img src="<?php echo $baseUrl.$product->getImage()?>">
 	<?php endif;?>
 	<?php endif;?>
 </p>

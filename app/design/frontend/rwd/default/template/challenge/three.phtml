@@ -13,8 +13,24 @@ foreach($products as $product):?>
     	    <b><?php echo $product->getName()?></b>
         	$<?php echo $product->getPrice()?>
         	#<?php echo $qty?>
+        	
         	<img src="<?php echo $baseUrl.$product->getImage()?>">
         	<?php #getthumbnail()?>
+        	
+        	<?php
+        	$productid = $product->getId();
+            $formKey = Mage::getSingleton('core/session')->getFormKey();?>
+            
+            <form action="/checkout/cart/add/product/<?php echo $productid; ?>" method="post">
+                Session<input type="text" name="form_key" value="<?php echo $formKey; ?>" />
+            
+                <input type="text" name="qty"> QTY
+            
+                <input type="submit" value="Add to CAr" />
+            </form>
+        	
+        	
+        	
     	<?php endif;?>
 	<?php endif;?>
 </p>

@@ -6,6 +6,7 @@ $products = Mage::getModel('catalog/product')
 ->getCollection()
 ->addAttributeToSelect('*')
 ->addAttributeToSort('created_at', 'DESC');
+$baseUrl = Mage::getBaseUrl('media') . 'catalog/product/';
 
 $products->getSelect()->limit(3);
 
@@ -17,7 +18,17 @@ foreach($products as $product):?>
 	    <b><?php echo $product->getName()?></b>
     	<?php echo $product->getPrice()?>
     	<?php echo $date->format('Y/m/d [H:i:s]');?>
-    	<?php #echo $product->getImageUrl();?>
+</p>
+
+<?php endforeach;?>
+<br><h3>with images</h3>
+<?php foreach($products as $product):?>
+    <?php $date = new DateTime($product->getCreatedAt());?>
+<p>
+	    <b><?php echo $product->getName()?></b>
+    	<?php echo $product->getPrice()?>
+    	<?php echo $date->format('Y/m/d [H:i:s]');?>
+    	<img src="<?php echo $baseUrl.$product->getImage()?>">
 </p>
 
 <?php endforeach;?>

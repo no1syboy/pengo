@@ -1,0 +1,12 @@
+<?php
+
+$products = Mage::getModel('catalog/product')->getCollection()->addAttributeToSelect('*')->addFieldToFilter("name",array("eq"=>"Gorro"));
+
+foreach($products as $product):?>
+
+<p>
+	<?php echo $product->getName();?>
+	<?php echo $product->getPrice();?>
+</p>
+
+<?php endforeach;?>

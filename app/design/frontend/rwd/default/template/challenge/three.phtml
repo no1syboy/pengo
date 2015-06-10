@@ -1,21 +1,19 @@
-<?php
-echo "Reto 3";
 
-$products = Mage::getModel('catalog/product')->getCollection()->addAttributeToSelect('*');
-$baseUrl = Mage::getBaseUrl('media') . 'catalog/product/';
+<?php echo "Reto 3";?>
 
-foreach($products as $product):?>
+<?php $products = $this->getProducts();?>
+<?php $baseUrl = $this->getBaseUrl();?>
+
+<?php foreach($products as $product):?>
 
 <p>
 	<?php if ($product->isSalable()):?>
-	<?php $qty = (int)Mage::getModel('cataloginventory/stock_item')->loadByProduct($product)->getQty();?>
+	<?php $qty = $this->getQty($product)?>
     	<?php if ($qty<=10 || $qty>=50):?>
     	    <b><?php echo $product->getName()?></b>
         	$<?php echo $product->getPrice()?>
         	#<?php echo $qty?>
-        	
         	<img src="<?php echo $baseUrl.$product->getImage()?>">
-        	<?php #getthumbnail()?>
         	
         	<?php
         	$productid = $product->getId();
@@ -23,13 +21,9 @@ foreach($products as $product):?>
             
             <form action="/checkout/cart/add/product/<?php echo $productid; ?>" method="post">
                 Session<input type="text" name="form_key" value="<?php echo $formKey; ?>" />
-            
                 <input type="text" name="qty"> QTY
-            
-                <input type="submit" value="Add to CAr" />
+                <input disabled type="submit" value="Add to CAr" />
             </form>
-        	
-        	
         	
     	<?php endif;?>
 	<?php endif;?>

@@ -83,7 +83,10 @@
 			 <action method="setTemplate"><template>page/1column.phtml</template></action>
 		</reference>
 		<reference name="content">
-			<block name="three" type="core/template" template="challenge/three.phtml"></block>
+			<block name="three" type="challenge/mymodule" template="challenge/three.phtml">
+			</block>
 		</reference>
-	</challenge_number_three>	
+		
+	</challenge_number_three>
+	
 </layout>

@@ -58,6 +58,7 @@
  */
 -->
 <config>
+
 	<modules>
         <Pengo_Challenge>
             <version>0.1.0</version>
@@ -80,5 +81,12 @@
                 </challenge>
             </updates>
         </layout>
-    </frontend>   
+    </frontend>  
+	 <global>
+      <blocks>
+         <challenge>
+              <class>Pengo_Challenge_Block</class>
+         </challenge>
+      </blocks>
+	</global> 
 </config>
